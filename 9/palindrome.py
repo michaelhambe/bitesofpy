@@ -6,7 +6,7 @@ import urllib.request
 DICTIONARY = os.path.join('/tmp', 'dictionary_m_words.txt')
 urllib.request.urlretrieve('http://bit.ly/2Cbj6zn', DICTIONARY)
 
-
+# no change
 def load_dictionary():
     """Load dictionary (sample) and return as generator (done)"""
     with open(DICTIONARY) as f:
