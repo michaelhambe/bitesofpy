@@ -39,24 +39,20 @@ def get_secret_token(username):
     else:
         raise UserDoesNotExist
         
-            
-# get_secret_token('Bob')
+def _get_user(username):
+    users = {user.name: user for user in USERS}
+    return users.get(username)
 
-# def get_secret_token2(username):
-#     try:
-#         users = [user.name for user in USERS]
-#         if username in users:
-#             try:
-#                 username_status = USERS
-#                 if USERS[username].expired:
-#                     pass
-#                 else:
-#                     raise UserAccessExpired
-#             except UserAccessExpired as e:
-#                 raise
-                
-#         else:
-#             raise UserDoesNotExist("validate.UserDoesNotExist")
 
-#     except UserDoesNotExist as e:
-#         raise
+def get_secret_token2(username):
+    user = _get_user(username)
+    if not user:
+        raise UserDoesNotExist
+
+    if user.expired:
+        raise UserAccessExpired
+
+    if user.role != ADMIN:
+        raise UserNoPermission
+
+    return SECRET
