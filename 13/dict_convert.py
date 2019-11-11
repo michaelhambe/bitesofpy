@@ -20,7 +20,5 @@ def dict2nt(dict_):
 
 
 def nt2json(nt):
-    t = dict2nt(nt)
-    td = t._asddict()
-    return 
-
+    od = nt._asdict()
+    return json.dumps(od, indent=4, sort_keys=True, default=str)
