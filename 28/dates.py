@@ -4,6 +4,8 @@ import os
 import re
 from urllib.request import urlretrieve
 
+#use counter datetime and findall
+
 BASE_URL = 'http://projects.bobbelderbos.com/pcc/dates/'
 RSS_FEED = 'all.rss.xml'
 PUB_DATE = re.compile(r'<pubDate>(.*?)</pubDate>')
@@ -24,7 +26,7 @@ def _get_dates():
 
 def convert_to_datetime(date_str):
     """Receives a date str and convert it into a datetime object"""
-    pass
+    return datetime.strptime(date_str[:-6], "%a, %d %b %Y %H:%M:%S")
 
 
 def get_month_most_posts(dates):
