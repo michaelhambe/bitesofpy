@@ -21,6 +21,8 @@ def transpose(data):
               b.append(v)
        return [tuple(a), tuple(b)]
 
+    #    return [data.keys(), data.values()]
+
     else:
        return zip(*data)
            
